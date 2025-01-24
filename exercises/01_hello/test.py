@@ -8,6 +8,8 @@ prg = './hello.py'
 
 
 # --------------------------------------------------
+#def = define function
+# testing if prg exists
 def test_exists():
     """exists"""
 
