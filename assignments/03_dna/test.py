@@ -10,20 +10,20 @@ TEST3 = ('./inputs/input3.txt', '196 231 237 246')
 
 
 # --------------------------------------------------
-def test_exists() -> None:
+def test_exists():
     """ Program exists """
 
-    assert os.path.exists(PRG)
+    assert os.path.isfile(PRG)
 
 
 # --------------------------------------------------
-def test_usage() -> None:
+def test_usage():
     """ Prints usage """
 
-    for arg in ['-h', '--help']:
-        rv, out = getstatusoutput(f'{PRG} {arg}')
+    for flag in ['-h', '--help']:
+        rv, out = getstatusoutput(f'{PRG} {flag}')
         assert rv == 0
-        assert out.lower().startswith('usage:')
+        assert out.lower().startswith('usage')
 
 
 # --------------------------------------------------

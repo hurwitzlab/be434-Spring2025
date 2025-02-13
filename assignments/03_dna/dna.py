@@ -7,15 +7,15 @@ Purpose: Read DNA samples
 
 import argparse
 
-
 # --------------------------------------------------
+
+
 def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
         description='Tetranucleotide frequency',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
     parser.add_argument('DNA',
                         metavar='DNA',
                         help='Input DNA sequence')
@@ -25,26 +25,28 @@ def get_args():
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Read and tabulate DNA bases"""
 
     args = get_args()
-    DNA=(args.DNA)
-    nucleotides = {'A':0, 'C':0, 'G':0, 'T':0}
-    Adenine = DNA.count('A')
-    Cytosine = DNA.count('C')
-    Guanine = DNA.count('G')
-    Thymidine = DNA.count('T')
-    for DNA in nucleotides.keys():
-        if DNA == 'A':
-            nucleotides['A'] =+ Adenine
-        if DNA == 'C':
-            nucleotides['C'] =+ Cytosine
-        if DNA == 'G':
-            nucleotides['G'] =+ Guanine
-        if DNA == 'G':
-            nucleotides['T'] =+ Thymidine
+    dna = args.DNA
+    nucleotides = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+    adenine = dna.count('A')
+    cytosine = dna.count('C')
+    guanine = dna.count('G')
+    thymidine = dna.count('T')
+    for dna in nucleotides:
+        if dna == 'A':
+            nucleotides['A'] += adenine
+        if dna == 'C':
+            nucleotides['C'] += cytosine
+        if dna == 'G':
+            nucleotides['G'] += guanine
+        if dna == 'T':
+            nucleotides['T'] += thymidine
     print(*nucleotides.values())
 
 # --------------------------------------------------
+
+
 if __name__ == '__main__':
     main()

@@ -6,9 +6,11 @@ Purpose: Divide two numbers
 """
 
 import argparse
-
+import sys
 
 # --------------------------------------------------
+
+
 def get_args():
     """Get command-line arguments"""
 
@@ -21,7 +23,6 @@ def get_args():
                         type=int,
                         help='Numbers to divide',
                         nargs=2)
-    
 
     return parser.parse_args()
 
@@ -31,15 +32,20 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    integer=args.integer
+    integer = args.integer
     integer_list = list(integer)
-    numerator=integer_list[0]
-    denominator=integer_list[1]
-    if integer_list[1] == 0:
-        print("usage: divide.py [-h] INT INT divide.py: error: Cannot divide by zero, dum-dum!")
+    numerator = integer_list[0]
+    denominator = integer_list[1]
+    if denominator == 0:
+        print(
+            "usage: divide.py [-h] INT INT divide.py: error:"
+            "Cannot divide by zero, dum-dum!"
+            )
+        sys.exit(1)
     else:
-        output=integer_list[0]/integer_list[1]
-        print(f'{numerator} / {denominator} = {output:.0}')
+        output = integer_list[0] / integer_list[1]
+        print(f'{numerator} / {denominator} = {int(output)}')
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
