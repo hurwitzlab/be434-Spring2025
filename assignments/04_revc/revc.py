@@ -26,7 +26,6 @@ def get_args():
 
     if os.path.isfile(args.DNA):
         args.DNA = open(args.DNA).read().rstrip()
-        out_fh = open('output.txt', 'wt')
     return args
 
 
@@ -38,15 +37,19 @@ def main():
     dna = args.DNA
     reverse_dna = dna[::-1]
 
-    complementary_nucleotides = {'A':'T', 'a':'t', 'C':'G', 'c':'g', 'T':'A', 't':'a', 'G':'C', 'g':'c'}
+    complementary_nucleotides = {
+        'A': 'T', 'a': 't', 'C': 'G', 'c': 'g',
+        'T': 'A', 't': 'a', 'G': 'C', 'g': 'c'
+    }
     output = ''
     for char in reverse_dna:
-        output += complementary_nucleotides.get(char, '') 
+        output += complementary_nucleotides.get(char, '')
 
     out_fh = open('output.txt', 'wt') if os.path.isfile(args.DNA) else sys.stdout
     out_fh.write(output + '\n')
     out_fh.close()
-        
+
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
